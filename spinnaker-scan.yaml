@@ -1,0 +1,18 @@
+id: spinnaker-scan
+info:
+  name: Spinnaker Detected
+  author: Caglar
+  severity: info
+  description: Spinnaker Server detected behind Auth Proxy
+requests:
+  - method: GET
+    path:
+      - "{{BaseURL}}/pipelines/favicon.ico"
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        part: body
+        words:
+          - "Pipeline not found"
